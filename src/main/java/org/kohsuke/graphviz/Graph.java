@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
+ * Represents a graph.
+ *
  * @author Kohsuke Kawaguchi
  */
 public class Graph extends GraphObject<Graph> {
@@ -53,6 +55,11 @@ public class Graph extends GraphObject<Graph> {
 
     public Graph edge(Node src, Node dst, Style s) {
         return edge(new Edge(src,dst).style(s));
+    }
+
+    public Graph subGraph(Graph g) {
+        subGraphs.add(decorate(g));
+        return this;
     }
 
     Graph self() {
