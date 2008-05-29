@@ -1,9 +1,13 @@
 package org.kohsuke.graphviz;
 
 import java.io.OutputStream;
+import java.io.File;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Arrays;
 import java.util.Map.Entry;
 
 /**
@@ -104,5 +108,37 @@ public class Graph extends GraphObject<Graph> {
             e.write(out);
         for (Graph g : subGraphs)
             g.writeEdges(out);
+    }
+
+    /**
+     * Generates the graph into the specified {@link OutputStream}.
+     */
+    public void generateTo(List<String> commands, OutputStream out) throws InterruptedException, IOException {
+        ProcessBuilder pb = new ProcessBuilder(commands);
+        Process proc = pb.start();
+        ByteArrayOutputStream error = new ByteArrayOutputStream();
+
+        StreamCopyThread t1 = new StreamCopyThread("stderr for " + Arrays.asList(commands),
+                proc.getErrorStream(), error);
+        StreamCopyThread t2 = new StreamCopyThread("stdout for " + Arrays.asList(commands),
+                proc.getInputStream(), out);
+        t1.start();
+        t2.start();
+
+        int r = proc.waitFor();
+        t1.join();
+        t2.join();
+        if(r!=0)
+            throw new IllegalArgumentException(error.toString());
+    }
+
+    /**
+     * Generates the graph into the specified file.
+     */
+    public void generateTo(List<String> commands, File f) throws InterruptedException, IOException {
+        commands = new ArrayList<String>(commands);
+        commands.add("-o");
+        commands.add(f.getAbsolutePath());
+        generateTo(commands,new ByteArrayOutputStream());
     }
 }
