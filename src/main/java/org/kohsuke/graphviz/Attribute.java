@@ -1,5 +1,7 @@
 package org.kohsuke.graphviz;
 
+import java.awt.*;
+
 /**
  * Type safe representation of graph attributes.
  * 
@@ -96,15 +98,31 @@ public abstract class Attribute<V> {
         }
     }
 
+    private static final class ColorAttribute extends Attribute<Color> {
+        ColorAttribute(String name) {
+            super(name);
+        }
+
+        public String toString(Color value) {
+            if(value==null)     return null;
+            return String.format("#%02x%02x%02x",value.getRed(), value.getGreen(), value.getBlue());
+        }
+
+        public Color fromString(String value) {
+            if(value==null)     return null;
+            return Color.decode(value.substring(1));
+        }
+    }
+
 //
 //  Node attributes
 //
-    public static final StringAttribute COLOR = new StringAttribute("color");
+    public static final ColorAttribute COLOR = new ColorAttribute("color");
     public static final StringAttribute COMMENT = new StringAttribute("comment");
     public static final FloatAttribute DISTORTION = new FloatAttribute("distortion");
-    public static final StringAttribute FILLCOLOR = new StringAttribute("fillcolor");
+    public static final ColorAttribute FILLCOLOR = new ColorAttribute("fillcolor");
     public static final BooleanAttribute FIXEDSIZE = new BooleanAttribute("fixedsize");
-    public static final StringAttribute FONTCOLOR = new StringAttribute("fontcolor");
+    public static final ColorAttribute FONTCOLOR = new ColorAttribute("fontcolor");
     public static final StringAttribute FONTNAME = new StringAttribute("fontname");
     public static final FloatAttribute FONTSIZE = new FloatAttribute("fontsize");
     public static final StringAttribute GROUP = new StringAttribute("group");
@@ -143,7 +161,7 @@ public abstract class Attribute<V> {
     public static final FloatAttribute LABELANGLE = new FloatAttribute("labelangle");
     public static final FloatAttribute LABELDISTANCE = new FloatAttribute("labeldistance");
     public static final BooleanAttribute LABELFLOAT = new BooleanAttribute("labelfloat");
-    public static final StringAttribute LABELFONTCOLOR = new StringAttribute("labelfontcolor");
+    public static final ColorAttribute LABELFONTCOLOR = new ColorAttribute("labelfontcolor");
     public static final StringAttribute LABELFONTNAME = new StringAttribute("labelfontname");
     public static final FloatAttribute LABELFONTSIZE = new FloatAttribute("labelfontsize");
     // LAYER
@@ -162,7 +180,7 @@ public abstract class Attribute<V> {
 //
 //  Graph attributes
 //
-    public static final StringAttribute BGCOLOR = new StringAttribute("bgcolor");
+    public static final ColorAttribute BGCOLOR = new ColorAttribute("bgcolor");
     public static final BooleanAttribute CENTER = new BooleanAttribute("center");
     public static final EnumAttribute<ClusterRank> CLUSTERRANK = new EnumAttribute<ClusterRank>("clusterrank",ClusterRank.class);
     // COLOR
