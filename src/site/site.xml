@@ -10,6 +10,7 @@
     <menu name="GraphViz Java API">
       <item name="Overview" href="index.html"/>
       <item name="Javadoc" href="nonav/apidocs/index.html"/>
+      <item name="Source code" href="nonav/xref/"/>
       <item name="Download" href="http://maven.dyndns.org/2/org/kohsuke/graphviz-api/"/>
 
       <item name="Mailing lists" href="servlets/ProjectMailingListList"/>
