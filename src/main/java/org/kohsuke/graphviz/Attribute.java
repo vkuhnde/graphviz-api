@@ -4,6 +4,10 @@ import java.awt.*;
 
 /**
  * Type safe representation of graph attributes.
+ *
+ * <p>
+ * See http://www.graphviz.org/doc/info/attrs.html
+ * for more documentation and what each attribute means.
  * 
  * @author Kohsuke Kawaguchi
  */
