@@ -22,6 +22,8 @@ public class Graph extends GraphObject<Graph> {
 
     private Style with;
 
+    private boolean to;
+
     /**
      * Sets the style to be used in successive {@code node} or {@code edge}
      * invocations.
@@ -41,11 +43,29 @@ public class Graph extends GraphObject<Graph> {
 
     public Graph node(Node n) {
         nodes.add(decorate(n));
+        if(to) {
+            to = false;
+            int sz = nodes.size();
+            edge(nodes.get(sz-2),nodes.get(sz -1));
+        }
         return this;
+    }
+
+    public Graph node(String label) {
+        return node(label,null);
     }
 
     public Graph node(String label, Style s) {
         return node(new Node().attr("label",label).style(s));
+    }
+
+    /**
+     * Used between two invocations of the node method
+     * to insert a new edge between them.
+     */
+    public Graph to() {
+        to = true;
+        return this;
     }
 
     public Graph edge(Edge e) {
@@ -112,6 +132,9 @@ public class Graph extends GraphObject<Graph> {
 
     /**
      * Generates the graph into the specified {@link OutputStream}.
+     *
+     * @param commands
+     *      The complete dot invocation and format specifier, such as ["dot","-Tgif"].
      */
     public void generateTo(List<String> commands, OutputStream out) throws InterruptedException, IOException {
         ProcessBuilder pb = new ProcessBuilder(commands);
@@ -124,6 +147,9 @@ public class Graph extends GraphObject<Graph> {
                 proc.getInputStream(), out);
         t1.start();
         t2.start();
+
+        writeTo(proc.getOutputStream());
+        proc.getOutputStream().close();
 
         int r = proc.waitFor();
         t1.join();
