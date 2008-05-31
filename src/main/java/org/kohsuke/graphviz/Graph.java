@@ -61,6 +61,7 @@ public class Graph extends GraphObject<Graph> {
     }
 
     public Graph node(String label) {
+        
         return node(label,null);
     }
 

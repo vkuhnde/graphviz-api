@@ -92,13 +92,24 @@ public abstract class GraphObject<T extends GraphObject<T>> {
         Map<String,String> m = getEffectiveAttributes();
         if(!m.isEmpty()) {
             w.print('[');
+            boolean hasHtmlLabel = m.containsKey("html");
+
             boolean first = true;
             for (Entry<String, String> e : m.entrySet()) {
+                if(hasHtmlLabel && e.getKey().equals("label"))
+                    continue;
+
                 if(!first)   w.print(',');
                 else        first=false;
-                w.print(e.getKey());
-                w.print('=');
-                w.print(escape(e.getValue()));
+                if(hasHtmlLabel && e.getKey().equals("html")) {
+                    w.print("label=<");
+                    w.print(e.getValue());
+                    w.print('>');
+                } else {
+                    w.print(e.getKey());
+                    w.print('=');
+                    w.print(escape(e.getValue()));
+                }
             }
             w.print(']');
         }
