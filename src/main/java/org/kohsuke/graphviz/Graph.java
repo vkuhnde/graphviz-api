@@ -20,29 +20,38 @@ public class Graph extends GraphObject<Graph> {
     private final List<Edge> edges = new ArrayList<Edge>();
     private final List<Graph> subGraphs = new ArrayList<Graph>();
 
-    private Style with;
+    private Style nodeWith,edgeWith;
 
     private boolean to;
 
     /**
-     * Sets the style to be used in successive {@code node} or {@code edge}
+     * Sets the style to be used in successive {@code node(...)}
      * invocations.
      */
-    public Graph with(Style s) {
-        with = s;
+    public Graph nodeWith(Style s) {
+        nodeWith = s;
+        return this;
+    }
+
+    /**
+     * Sets the style to be used in successive {@code edge(...)}
+     * invocations.
+     */
+    public Graph edgeWith(Style s) {
+        edgeWith = s;
         return this;
     }
 
     /**
      * Applies the current style if any.
      */
-    private <T extends GraphObject> T decorate(T t) {
+    private <T extends GraphObject> T decorate(T t, Style with) {
         if(with!=null && t.style()==null)  t.style(with);
         return t;
     }
 
     public Graph node(Node n) {
-        nodes.add(decorate(n));
+        nodes.add(decorate(n,nodeWith));
         if(to) {
             to = false;
             int sz = nodes.size();
@@ -69,7 +78,7 @@ public class Graph extends GraphObject<Graph> {
     }
 
     public Graph edge(Edge e) {
-        edges.add(decorate(e));
+        edges.add(decorate(e,edgeWith));
         return this;
     }
 
@@ -82,7 +91,7 @@ public class Graph extends GraphObject<Graph> {
     }
 
     public Graph subGraph(Graph g) {
-        subGraphs.add(decorate(g));
+        subGraphs.add(g);
         return this;
     }
 

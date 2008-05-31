@@ -13,6 +13,6 @@ public class SimpleTest extends TestCase {
         Graph graph = new Graph();
         Style s = new Style();
         s.attr(COLOR, Color.RED);
-        graph.with(s).node("a").to().node("b").generateTo(Arrays.asList("dot","-Tgif"),new File("test.gif"));
+        graph.nodeWith(s).node("a").to().node("b").generateTo(Arrays.asList("dot","-Tgif"),new File("test.gif"));
     }
 }
