@@ -139,7 +139,7 @@ public abstract class Attribute<V> {
     public static final IntAttribute SIDES = new IntAttribute("sides");
     public static final FloatAttribute SKEW = new FloatAttribute("skew");
     public static final EnumAttribute<StyleAttr> STYLE = new EnumAttribute<StyleAttr>("style",StyleAttr.class);
-    public static final StringAttribute URL = new StringAttribute("url");
+    public static final StringAttribute URL = new StringAttribute("URL");
     public static final FloatAttribute WIDTH = new FloatAttribute("width");
     public static final FloatAttribute Z = new FloatAttribute("z");
     
