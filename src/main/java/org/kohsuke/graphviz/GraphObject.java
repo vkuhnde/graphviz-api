@@ -1,6 +1,5 @@
 package org.kohsuke.graphviz;
 
-import java.io.PrintWriter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -17,7 +16,15 @@ public abstract class GraphObject<T extends GraphObject<T>> {
     private Style style;
     private final LinkedHashMap<String,String> attributes
             = new LinkedHashMap<String,String>();
+    /*package*/ String id;
 
+    /**
+     * Explicitly set the ID of this object. 
+     */
+    public final T id(String id) {
+        this.id = id;
+        return self();
+    }
 
     /**
      * Sets the style of this object to the given one.

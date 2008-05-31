@@ -20,8 +20,11 @@ final class Printer extends PrintStream {
      */
     String id(GraphObject o) {
         String id = idTable.get(o);
-        if(id==null)
-            idTable.put(o,id="n"+idTable.size());
+        if(id==null) {
+            if(o.id!=null)  id=o.id;              
+            else            id="n"+idTable.size();
+            idTable.put(o,id);
+        }
         return id;
     }
 }
