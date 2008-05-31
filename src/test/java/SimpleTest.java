@@ -22,8 +22,9 @@ public class SimpleTest extends TestCase {
         s.attr(Attribute.FONTNAME,"sans serif");
         s.attr(Attribute.FONTSIZE,10f);
         s.attr(Attribute.SHAPE, org.kohsuke.graphviz.Shape.NONE);
+        s.attr(Attribute.URL, "http://www.sun.com/");
         graph.nodeWith(s);
         graph.node("a").to().node("b").to().node("c");
-        graph.generateTo(Arrays.asList("dot","-Tgif"),new File("test2.gif"));
+        graph.generateTo(Arrays.asList("dot","-Tcmapx","-ox.map","-Tgif"),new File("test2.gif"));
     }
 }
