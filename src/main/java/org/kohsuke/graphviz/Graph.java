@@ -127,7 +127,7 @@ public class Graph extends GraphObject<Graph> {
             n.write(out);
 
         for (Graph g : subGraphs) {
-            out.println("subgraph "+out.id(this)+" {");
+            out.println("subgraph "+out.id(g)+" {");
             g.writeNodes(out);
             out.println("}");
         }
