@@ -2,15 +2,15 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.kohsuke</groupId>
   <artifactId>graphviz-api</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
 
   <packaging>jar</packaging>
   <name>graphviz-api</name>
   <url>http://graphviz-api.dev.java.net</url>
   
   <scm>
-    <connection>scm:svn:https://svn.dev.java.net/svn/graphviz-api/trunk/graphviz-api/</connection>
-    <developerConnection>scm:svn:https://svn.dev.java.net/svn/graphviz-api/trunk/graphviz-api/</developerConnection>
+    <connection>scm:svn:https://svn.dev.java.net/svn/graphviz-api/tags/graphviz-api-1.1</connection>
+    <developerConnection>scm:svn:https://svn.dev.java.net/svn/graphviz-api/tags/graphviz-api-1.1</developerConnection>
   </scm>
 
   <build>
