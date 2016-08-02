@@ -51,7 +51,9 @@ public class Graph extends GraphObject<Graph> {
     }
 
     public Graph node(Node n) {
-        nodes.add(decorate(n,nodeWith));
+    	if (! nodes.contains(n))
+    		nodes.add(decorate(n,nodeWith));
+
         if(to) {
             to = false;
             int sz = nodes.size();
@@ -61,12 +63,11 @@ public class Graph extends GraphObject<Graph> {
     }
 
     public Graph node(String label) {
-        
         return node(label,null);
     }
 
     public Graph node(String label, Style s) {
-        return node(new Node().attr("label",label).style(s));
+        return node(new Node(label).style(s));
     }
 
     /**
@@ -75,6 +76,20 @@ public class Graph extends GraphObject<Graph> {
      */
     public Graph to() {
         to = true;
+        return this;
+    }
+
+    public Graph fromToNode(Node fromNode, Node toNode, String label, Style s) {
+       	if (! nodes.contains(fromNode))
+    		nodes.add(decorate(fromNode,nodeWith));
+       	if (! nodes.contains(toNode))
+    		nodes.add(decorate(toNode,nodeWith));
+
+       	if (label==null || "".equals(label))
+       		edge(fromNode, toNode, s);
+       	else 
+       		edge(fromNode, toNode, s, label);
+       	
         return this;
     }
 
@@ -89,6 +104,10 @@ public class Graph extends GraphObject<Graph> {
 
     public Graph edge(Node src, Node dst, Style s) {
         return edge(new Edge(src,dst).style(s));
+    }
+
+    public Graph edge(Node src, Node dst, Style s, String label) {
+        return edge(new Edge(src,dst).style(s).attr("label", label));
     }
 
     public Graph subGraph(Graph g) {
@@ -111,6 +130,19 @@ public class Graph extends GraphObject<Graph> {
         out.println("digraph "+out.id(this)+" {");
         writeNodes(out);
         writeEdges(out);
+        out.println("}");
+    }
+
+    public void writeTo(OutputStream out, String prefix, String suffix) {
+        writeTo(new Printer(out), prefix, suffix);
+    }
+
+    private void writeTo(Printer out, String prefix, String suffix) {
+    	if (prefix != null && !"".equals(prefix)) out.println(prefix);
+        out.println("digraph "+out.id(this)+" {");
+        writeNodes(out);
+        writeEdges(out);
+    	if (suffix != null && !"".equals(suffix)) out.println(suffix);
         out.println("}");
     }
 
