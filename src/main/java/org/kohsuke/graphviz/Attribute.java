@@ -207,6 +207,7 @@ public abstract class Attribute<V> {
     public static final FloatAttribute NSLIMIT1 = new FloatAttribute("nslimit1");
     public static final StringAttribute ORDERING = new StringAttribute("ordering");
     public static final EnumAttribute<Orientation> GRAPH_ORIENTATION = new EnumAttribute<Orientation>("orientation",Orientation.class);
+    public static final EnumAttribute<Overlap> OVERLAP = new EnumAttribute<Overlap>("overlap", Overlap.class);
     public static final StringAttribute PAGE = new StringAttribute("page");
     public static final EnumAttribute<PageDir> PAGEDIR = new EnumAttribute<PageDir>("pagedir",PageDir.class);
     public static final EnumAttribute<Rank> RANK = new EnumAttribute<Rank>("rank",Rank.class);
