@@ -219,7 +219,7 @@ public abstract class Attribute<V> {
     public static final IntAttribute SAMPLEPOINTS = new IntAttribute("samplepoints");
     public static final IntAttribute SEARCHSIZE = new IntAttribute("searchsize");
     public static final FloatAttribute SIZE = new FloatAttribute("size");
-    public static final EnumAttribute<Spline> SPLINES = new EnumAttribute<Spline>("splines", Spline.class);
+    public static final EnumAttribute<Splines> SPLINES = new EnumAttribute<Splines>("splines", Splines.class);
     // STYLE
     // URL
 
