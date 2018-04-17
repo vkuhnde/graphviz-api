@@ -131,6 +131,7 @@ public abstract class Attribute<V> {
     public static final FloatAttribute FONTSIZE = new FloatAttribute("fontsize");
     public static final StringAttribute GROUP = new StringAttribute("group");
     public static final FloatAttribute HEIGHT = new FloatAttribute("height");
+    public static final StringAttribute HTML = new StringAttribute("html");
     public static final StringAttribute LABEL = new StringAttribute("label");
     public static final StringAttribute LAYER = new StringAttribute("layer");
     public static final FloatAttribute NODE_ORIENTATION = new FloatAttribute("orientation");
