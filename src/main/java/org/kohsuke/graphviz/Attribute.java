@@ -214,7 +214,8 @@ public abstract class Attribute<V> {
     public static final EnumAttribute<Rank> RANK = new EnumAttribute<Rank>("rank",Rank.class);
     public static final EnumAttribute<RankDir> RANKDIR = new EnumAttribute<RankDir>("rankdir",RankDir.class);
     public static final FloatAttribute RANKSEP = new FloatAttribute("ranksep");
-    // RATIO??
+    public static final FloatAttribute RATIO_NUM = new FloatAttribute("ratio");
+    public static final EnumAttribute<Ratio> RATIO = new EnumAttribute<Ratio>("ratio", Ratio.class);
     public static final BooleanAttribute REMINCROSS = new BooleanAttribute("remincross");
     public static final BooleanAttribute ROTATE = new BooleanAttribute("rotate");
     public static final IntAttribute SAMPLEPOINTS = new IntAttribute("samplepoints");
