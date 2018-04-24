@@ -141,6 +141,7 @@ public abstract class Attribute<V> {
     public static final IntAttribute SIDES = new IntAttribute("sides");
     public static final FloatAttribute SKEW = new FloatAttribute("skew");
     public static final EnumAttribute<StyleAttr> STYLE = new EnumAttribute<StyleAttr>("style",StyleAttr.class);
+    public static final StringAttribute TOOLTIP = new StringAttribute(("tooltip"));
     public static final StringAttribute URL = new StringAttribute("URL");
     public static final FloatAttribute WIDTH = new FloatAttribute("width");
     public static final FloatAttribute Z = new FloatAttribute("z");
@@ -157,12 +158,13 @@ public abstract class Attribute<V> {
     public static final BooleanAttribute CONSTRAINT = new BooleanAttribute("constraint");
     public static final BooleanAttribute DECORATE = new BooleanAttribute("decorate");
     public static final EnumAttribute<Dir> DIR = new EnumAttribute<Dir>("dir",Dir.class);
+    public static final StringAttribute EDGEURL = new StringAttribute("edgeURL");
     // FONTCOLOR
     // FONTNAME
     // FONTSIZE
     public static final StringAttribute HEADLABEL = new StringAttribute("headlabel");
     public static final EnumAttribute<Port> HEADPORT = new EnumAttribute<Port>("headport",Port.class);
-    public static final StringAttribute HEADURL = new StringAttribute("headurl");
+    public static final StringAttribute HEADURL = new StringAttribute("headURL");
     // LABEL
     public static final FloatAttribute LABELANGLE = new FloatAttribute("labelangle");
     public static final FloatAttribute LABELDISTANCE = new FloatAttribute("labeldistance");
@@ -170,6 +172,7 @@ public abstract class Attribute<V> {
     public static final ColorAttribute LABELFONTCOLOR = new ColorAttribute("labelfontcolor");
     public static final StringAttribute LABELFONTNAME = new StringAttribute("labelfontname");
     public static final FloatAttribute LABELFONTSIZE = new FloatAttribute("labelfontsize");
+    public static final StringAttribute LABELURL = new StringAttribute("labelURL");
     // LAYER
     public static final StringAttribute LHEAD = new StringAttribute("lhead");
     public static final StringAttribute LTAIL = new StringAttribute("ltail");
@@ -180,7 +183,8 @@ public abstract class Attribute<V> {
     // STYLE
     public static final StringAttribute TAILLABEL = new StringAttribute("taillabel");
     public static final EnumAttribute<Port> TAILPORT = new EnumAttribute<Port>("tailport",Port.class);
-    public static final StringAttribute TAILURL = new StringAttribute("tailurl");
+    public static final StringAttribute TAILURL = new StringAttribute("tailURL");
+    // TOOLTIP
     public static final IntAttribute WEIGHT = new IntAttribute("weight");
 
 
@@ -194,6 +198,7 @@ public abstract class Attribute<V> {
     // COMMENT
     public static final BooleanAttribute COMPOUND = new BooleanAttribute("compund");
     // CONCENTRATE
+    public static final FloatAttribute DPI = new FloatAttribute("dpi");
     // FILLCOLOR
     // FONTCOLOR
     // FONTNAME
@@ -226,6 +231,7 @@ public abstract class Attribute<V> {
     public static final FloatAttribute SIZE = new FloatAttribute("size");
     public static final EnumAttribute<Splines> SPLINES = new EnumAttribute<Splines>("splines", Splines.class);
     // STYLE
+    // TOOLTIP - cluster subgraphs only
     // URL
 
 }
