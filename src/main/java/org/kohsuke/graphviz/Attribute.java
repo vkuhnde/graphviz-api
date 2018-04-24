@@ -135,6 +135,7 @@ public abstract class Attribute<V> {
     public static final StringAttribute LABEL = new StringAttribute("label");
     public static final StringAttribute LAYER = new StringAttribute("layer");
     public static final FloatAttribute NODE_ORIENTATION = new FloatAttribute("orientation");
+    public static final FloatAttribute PENWIDTH = new FloatAttribute("penwidth");
     public static final BooleanAttribute REGULAR = new BooleanAttribute("regular");
     public static final EnumAttribute<Shape> SHAPE = new EnumAttribute<Shape>("shape",Shape.class);
     public static final IntAttribute SIDES = new IntAttribute("sides");
@@ -173,6 +174,7 @@ public abstract class Attribute<V> {
     public static final StringAttribute LHEAD = new StringAttribute("lhead");
     public static final StringAttribute LTAIL = new StringAttribute("ltail");
     public static final IntAttribute MINLEN = new IntAttribute("minlen");
+    // PENWIDTH
     public static final StringAttribute SAMEHEAD = new StringAttribute("samehead");
     public static final StringAttribute SAMETAIL = new StringAttribute("sametail");
     // STYLE
@@ -211,6 +213,7 @@ public abstract class Attribute<V> {
     public static final EnumAttribute<Overlap> OVERLAP = new EnumAttribute<Overlap>("overlap", Overlap.class);
     public static final StringAttribute PAGE = new StringAttribute("page");
     public static final EnumAttribute<PageDir> PAGEDIR = new EnumAttribute<PageDir>("pagedir",PageDir.class);
+    // PENWIDTH - cluster subgraphs only
     public static final EnumAttribute<Rank> RANK = new EnumAttribute<Rank>("rank",Rank.class);
     public static final EnumAttribute<RankDir> RANKDIR = new EnumAttribute<RankDir>("rankdir",RankDir.class);
     public static final FloatAttribute RANKSEP = new FloatAttribute("ranksep");
