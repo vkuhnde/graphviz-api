@@ -119,7 +119,7 @@ public abstract class Attribute<V> {
     }
 
     private static final class ColorListAttribute extends Attribute<Color[]> {
-        ColorAttribute(String name) {
+        ColorListAttribute(String name) {
             super(name);
         }
 
@@ -140,7 +140,7 @@ public abstract class Attribute<V> {
             String[] split = value.split(":");
             Color[] colors = new Color[split.length];
             for (int i = 0; i < split.length; i++) {
-                colors[i] = Color.decode(split[i].substring(1))
+                colors[i] = Color.decode(split[i].substring(1));
             }
             return colors;
         }
