@@ -118,13 +118,41 @@ public abstract class Attribute<V> {
         }
     }
 
+    private static final class ColorListAttribute extends Attribute<Color[]> {
+        ColorAttribute(String name) {
+            super(name);
+        }
+
+        public String toString(Color[] value) {
+            if(value==null)     return null;
+            StringBuilder sb = new StringBuilder();
+            String colon = "";
+            for (Color c : value) {
+                sb.append(colon);
+                sb.append(String.format("#%02x%02x%02x",value.getRed(), value.getGreen(), value.getBlue()));
+                colon = ":";
+            }
+            return sb.toString();
+        }
+
+        public Color[] fromString(String value) {
+            if(value==null)     return null;
+            String[] split = value.split(":");
+            Color[] colors = new Color[split.length];
+            for (int i = 0; i < split.length; i++) {
+                colors[i] = Color.decode(split[i].substring(1))
+            }
+            return colors;
+        }
+    }
+
 //
 //  Node attributes
 //
-    public static final ColorAttribute COLOR = new ColorAttribute("color");
+    public static final ColorListAttribute COLOR = new ColorListAttribute("color");
     public static final StringAttribute COMMENT = new StringAttribute("comment");
     public static final FloatAttribute DISTORTION = new FloatAttribute("distortion");
-    public static final ColorAttribute FILLCOLOR = new ColorAttribute("fillcolor");
+    public static final ColorListAttribute FILLCOLOR = new ColorListAttribute("fillcolor");
     public static final BooleanAttribute FIXEDSIZE = new BooleanAttribute("fixedsize");
     public static final ColorAttribute FONTCOLOR = new ColorAttribute("fontcolor");
     public static final StringAttribute FONTNAME = new StringAttribute("fontname");
@@ -191,7 +219,7 @@ public abstract class Attribute<V> {
 //
 //  Graph attributes
 //
-    public static final ColorAttribute BGCOLOR = new ColorAttribute("bgcolor");
+    public static final ColorListAttribute BGCOLOR = new ColorListAttribute("bgcolor");
     public static final BooleanAttribute CENTER = new BooleanAttribute("center");
     public static final EnumAttribute<ClusterRank> CLUSTERRANK = new EnumAttribute<ClusterRank>("clusterrank",ClusterRank.class);
     // COLOR
