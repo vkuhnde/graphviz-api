@@ -114,7 +114,7 @@ public abstract class Attribute<V> {
 
         public Color fromString(String value) {
             if(value==null)     return null;
-            return Color.decode(value.substring(1));
+            return Color.decode(value);
         }
     }
 
@@ -140,7 +140,7 @@ public abstract class Attribute<V> {
             String[] split = value.split(":");
             Color[] colors = new Color[split.length];
             for (int i = 0; i < split.length; i++) {
-                colors[i] = Color.decode(split[i].substring(1));
+                colors[i] = Color.decode(split[i]);
             }
             return colors;
         }

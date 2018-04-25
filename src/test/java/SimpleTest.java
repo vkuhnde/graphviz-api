@@ -27,4 +27,11 @@ public class SimpleTest extends TestCase {
         graph.node("a").to().node("b").to().node("c");
         graph.generateTo(Arrays.asList("dot","-Tcmapx","-ox.map","-Tgif"),new File("test2.gif"));
     }
+
+    public void test3() {
+        Style s = new Style();
+        s.attr(COLOR, Color.RED);
+        Style s2 = new Style();
+        s2.attr(COLOR, s.attr(COLOR));
+    }
 }
