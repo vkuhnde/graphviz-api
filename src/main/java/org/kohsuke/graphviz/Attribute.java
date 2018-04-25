@@ -149,10 +149,12 @@ public abstract class Attribute<V> {
 //
 //  Node attributes
 //
-    public static final ColorListAttribute COLOR = new ColorListAttribute("color");
+    public static final ColorAttribute COLOR = new ColorAttribute("color");
+    public static final ColorListAttribute COLOR_LIST = new ColorListAttribute("color");
     public static final StringAttribute COMMENT = new StringAttribute("comment");
     public static final FloatAttribute DISTORTION = new FloatAttribute("distortion");
-    public static final ColorListAttribute FILLCOLOR = new ColorListAttribute("fillcolor");
+    public static final ColorAttribute FILLCOLOR = new ColorAttribute("fillcolor");
+    public static final ColorListAttribute FILLCOLOR_LIST = new ColorListAttribute("fillcolor");
     public static final BooleanAttribute FIXEDSIZE = new BooleanAttribute("fixedsize");
     public static final ColorAttribute FONTCOLOR = new ColorAttribute("fontcolor");
     public static final StringAttribute FONTNAME = new StringAttribute("fontname");
@@ -219,7 +221,8 @@ public abstract class Attribute<V> {
 //
 //  Graph attributes
 //
-    public static final ColorListAttribute BGCOLOR = new ColorListAttribute("bgcolor");
+    public static final ColorAttribute BGCOLOR = new ColorAttribute("bgcolor");
+    public static final ColorListAttribute BGCOLOR_LIST = new ColorListAttribute("bgcolor");
     public static final BooleanAttribute CENTER = new BooleanAttribute("center");
     public static final EnumAttribute<ClusterRank> CLUSTERRANK = new EnumAttribute<ClusterRank>("clusterrank",ClusterRank.class);
     // COLOR
