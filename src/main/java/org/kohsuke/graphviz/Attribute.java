@@ -129,7 +129,7 @@ public abstract class Attribute<V> {
             String colon = "";
             for (Color c : value) {
                 sb.append(colon);
-                sb.append(String.format("#%02x%02x%02x",value.getRed(), value.getGreen(), value.getBlue()));
+                sb.append(String.format("#%02x%02x%02x",c.getRed(), c.getGreen(), c.getBlue()));
                 colon = ":";
             }
             return sb.toString();
